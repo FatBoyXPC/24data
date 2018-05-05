@@ -40,8 +40,8 @@ class PeopleView
         return [
             'errors' => $this->errors,
             'people' => $sortedPeople,
-            'selectedSortOrder' => $this->request['sort_order'],
-            'selectedSortBy' => $this->request['sort_by'],
+            'selectedSortOrder' => $this->request['sort_order'] ?? '',
+            'selectedSortBy' => $this->request['sort_by'] ?? '',
             'availableFields' => $people->getFieldNames(),
         ];
     }

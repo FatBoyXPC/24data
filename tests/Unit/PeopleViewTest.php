@@ -64,7 +64,6 @@ class PeopleViewTest extends TestCase
     public function viewDataHasInvalidSortOrderError()
     {
         $request = [
-            'sort_by' => 'FName',
             'sort_order' => 'foo',
         ];
 
@@ -78,7 +77,6 @@ class PeopleViewTest extends TestCase
     {
         $request = [
             'sort_by' => 'foo',
-            'sort_order' => 'ASC',
         ];
 
         $peopleView = new PeopleView($request, $this->peoplePath, 'FName', 'ASC');
