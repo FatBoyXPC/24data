@@ -5,6 +5,12 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <style>
+        form {
+            margin-bottom: 20px;
+        }
+    </style>
   </head>
 
   <body>
@@ -18,9 +24,49 @@
 
     <main role="main" class="container">
 
-      <div class="starter-template">
-        <h1>24 Data JSON Table</h1>
-      </div>
+    <h1>24 Data JSON Table</h1>
+
+    <?php foreach ($errors as $error): ?>
+    <div class="alert alert-danger">
+        <?= $error ?>
+    </div>
+    <?php endforeach ?>
+
+    <form method="GET" class="form">
+        <div class="row">
+            <div class="col-5">
+                <select name="sort_by" class="form-control">
+                    <option value="">Sort By</option>
+                <?php foreach ($availableFields as $field): ?>
+                    <?php if ($selectedField == $field): ?>
+                    <option selected><?= $field ?></option>
+                    <?php else: ?>
+                    <option><?= $field ?></option>
+                    <?php endif ?>
+                <?php endforeach ?>
+                </select>
+            </div>
+            <div class="col-5">
+                <select name="sort_order" class="form-control">
+                    <option value="">Sort Order</option>
+                    <?php if ($sortOrder == 'ASC'): ?>
+                    <option value="ASC" selected>Ascending</option>
+                    <?php else: ?>
+                    <option value="ASC">Ascending</option>
+                    <?php endif ?>
+
+                    <?php if ($sortOrder == 'DESC'): ?>
+                    <option value="DESC" selected>Descending</option>
+                    <?php else: ?>
+                    <option value="DESC">Descending</option>
+                    <?php endif ?>
+                </select>
+            </div>
+            <div class="col-2 text-right">
+                <button type="submit" class="btn btn-outline-secondary">Sort</button>
+            </div>
+        </div>
+    </form>
 
     <table class="table table-striped table-hover table-bordered">
         <thead>

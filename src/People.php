@@ -7,6 +7,11 @@ class People
     const SORT_ORDER_ASCENDING = 'ASC';
     const SORT_ORDER_DESCENDING = 'DESC';
 
+    const SORT_ORDERS = [
+        self::SORT_ORDER_ASCENDING,
+        self::SORT_ORDER_DESCENDING,
+    ];
+
     public function __construct($peoplePath)
     {
         $this->people = json_decode(file_get_contents($peoplePath));
