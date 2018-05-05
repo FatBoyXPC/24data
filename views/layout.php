@@ -38,7 +38,7 @@
                 <select name="sort_by" class="form-control">
                     <option value="">Sort By</option>
                 <?php foreach ($availableFields as $field): ?>
-                    <?php if ($selectedField == $field): ?>
+                    <?php if ($selectedSortBy == $field): ?>
                     <option selected><?= $field ?></option>
                     <?php else: ?>
                     <option><?= $field ?></option>
@@ -49,13 +49,13 @@
             <div class="col-5">
                 <select name="sort_order" class="form-control">
                     <option value="">Sort Order</option>
-                    <?php if ($sortOrder == 'ASC'): ?>
+                    <?php if ($selectedSortOrder == 'ASC'): ?>
                     <option value="ASC" selected>Ascending</option>
                     <?php else: ?>
                     <option value="ASC">Ascending</option>
                     <?php endif ?>
 
-                    <?php if ($sortOrder == 'DESC'): ?>
+                    <?php if ($selectedSortOrder == 'DESC'): ?>
                     <option value="DESC" selected>Descending</option>
                     <?php else: ?>
                     <option value="DESC">Descending</option>
