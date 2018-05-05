@@ -59,4 +59,30 @@ class PeopleViewTest extends TestCase
 
         $this->assertEquals($expected, $peopleView->getData());
     }
+
+    /** @test */
+    public function viewDataHasInvalidSortOrderError()
+    {
+        $request = [
+            'sort_by' => 'FName',
+            'sort_order' => 'foo',
+        ];
+
+        $peopleView = new PeopleView($request, $this->peoplePath, 'FName', 'ASC');
+
+        $this->assertContains('order', $peopleView->getData()['errors'][0]);
+    }
+
+    /** @test */
+    public function viewDataHasInvalidSortByError()
+    {
+        $request = [
+            'sort_by' => 'foo',
+            'sort_order' => 'ASC',
+        ];
+
+        $peopleView = new PeopleView($request, $this->peoplePath, 'FName', 'ASC');
+
+        $this->assertContains('field', $peopleView->getData()['errors'][0]);
+    }
 }
