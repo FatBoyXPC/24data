@@ -13,7 +13,4 @@
             <directory>./tests/Unit</directory>
         </testsuite>
     </testsuites>
-    <php>
-        <env name="JSON_FILE" value="tests/people.json"/>
-    </php>
 </phpunit>
