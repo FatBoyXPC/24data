@@ -73,4 +73,12 @@ class PeopleTest extends TestCase
 
         $this->people->sortBy('MissingField', People::SORT_ORDER_ASCENDING);
     }
+
+    /** @test */
+    public function canGetFieldNames()
+    {
+        $expected = ['FName', 'LName', 'Age'];
+
+        $this->assertEquals($expected, $this->people->getFieldNames());
+    }
 }

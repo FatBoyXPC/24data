@@ -27,21 +27,22 @@ class PeopleView
         $this->checkSortOrderIsValid();
 
         $sortOrder = $this->getSortOrder();
+        $people = new People($this->jsonFile);
 
         try {
-            $people = (new People($this->jsonFile))->sortBy($this->getSortBy(), $sortOrder);
+            $sortedPeople = $people->sortBy($this->getSortBy(), $sortOrder);
         } catch (MissingFieldException $e) {
             $this->errors[] = $e->getMessage();
 
-            $people = (new People($this->jsonFile))->sortBy($this->defaultSortBy, $sortOrder);
+            $sortedPeople = $people->sortBy($this->defaultSortBy, $sortOrder);
         }
 
         return [
             'errors' => $this->errors,
-            'people' => $people,
+            'people' => $sortedPeople,
             'selectedSortOrder' => $this->request['sort_order'],
             'selectedSortBy' => $this->request['sort_by'],
-            'availableFields' => array_keys(get_object_vars($people[0])),
+            'availableFields' => $people->getFieldNames(),
         ];
     }
 

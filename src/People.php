@@ -36,4 +36,9 @@ class People
             throw new MissingFieldException("The requested field $field is missing.");
         }
     }
+
+    public function getFieldNames()
+    {
+        return array_keys(get_object_vars($this->people[0]));
+    }
 }
