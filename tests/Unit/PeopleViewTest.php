@@ -11,7 +11,7 @@ class PeopleViewTest extends TestCase
     {
         parent::setUp();
 
-        $this->peoplePath = "tests/people.json";
+        $this->peoplePath = "tests" . DIRECTORY_SEPARATOR . "people.json";
         $this->people = new People($this->peoplePath);
 
         $this->bob = (object) [

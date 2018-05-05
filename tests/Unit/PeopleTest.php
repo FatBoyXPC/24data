@@ -10,8 +10,8 @@ class PeopleTest extends TestCase
     {
         parent::setUp();
 
-        $peoplePath = "tests/people.json";
-        $this->people = new People($peoplePath);
+        $this->peoplePath = "tests" . DIRECTORY_SEPARATOR . "people.json";
+        $this->people = new People($this->peoplePath);
 
         $this->bob = (object) [
             'FName' => 'Bob',
